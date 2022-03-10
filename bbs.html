@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>掲示板</title>
+  </head>
+  <body>
+    <div class="title">
+      <h1>シェアちゃんねる</h1>
+      <p>みんなが関心のある記事を投稿してみんなでシェアしよう</p>
+    </div>
+    <div class="addArticle">
+      <span>記事投稿はここから！</span><br />
+      タイトル：<input type="text" id="title" /><br />
+      ハンドルネーム：<input type="text" id="name" /><br />
+      記事内容：<br />
+      <textarea name="article" id="newArticle" cols="30" rows="10"></textarea
+      ><br />
+      <form id="addArticle">
+        <button type="button">投稿！</button>
+      </form>
+    </div>
+    <hr />
+    <div class="articleArea" id="articleArea">
+      <!-- <div class="showTitle" id="showTitle">タイトル：</div>
+      <div class="showName" id="showName">名前：</div>
+      <div class="showArticle" id="showArticle">記事内容：</div>
+    -->
+      <button type="button" id="iineButton">いいね！</button>
+    </div>
+    <!-- 以下の記述を必ずする -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./bbs.js"></script>
+  </body>
+</html>
