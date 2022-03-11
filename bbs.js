@@ -24,7 +24,7 @@ $(function () {
     // 記事投稿欄に反映する
     for (let i = 1; i <= counter; i++) {
       articles.push({
-        id: articleId,
+        id: counter,
         title: newTitle,
         name: newName,
         content: newArticle,
@@ -43,8 +43,18 @@ $(function () {
 
     // 記事の追加
     $("#articleArea").append(
-      "<p>" + "タイトル：" + "<br/>" + "<br/>" + articleTitle + "</p>"
+      "<p>" +
+        "タイトル：" +
+        "<br/>" +
+        "<br/>" +
+        articleTitle +
+        "</p>" +
+        `<span id="articleId">` +
+        articleId +
+        "</span>"
     );
+
+    $("#articleId").hide();
     $("#articleArea").append(
       "<p>" + "投稿者名：" + "<br/>" + "<br/>" + articleName + "</p>"
     );
@@ -58,20 +68,12 @@ $(function () {
 
     $(".iineButton").on("click", function () {
       // いいねを押した数
-      let totalIine = Number(++articleIine);
-      console.log(totalIine);
-      console.log(articleId);
+      let calIine = (articleIine += 1);
+      let totalIine = Number(calIine);
 
-      if (totalIine === 1) {
-        $("#articleArea").append(
-          ` <span class="iineCount" >` + totalIine + "</span>"
-        );
-      } else if (totalIine > 1) {
-        let count = ` <span class="iineCount" >` + totalIine + "</span>";
-        $(".iineCount").replaceWith(count);
-      } else {
-        return;
-      }
+      $("#articleArea").append(
+        ` <span class="iineCount" >` + totalIine + "</span>"
+      );
     });
     // end of 投稿ボタン処理
   });
