@@ -50,7 +50,6 @@ $(function () {
         articleTitle +
         "</p>" +
         `<span id="articleId">` +
-        articleId +
         "</span>"
     );
 
@@ -67,12 +66,23 @@ $(function () {
     );
 
     $(".iineButton").on("click", function () {
-      // いいねを押した数
-      let calIine = (articleIine += 1);
-      let totalIine = Number(calIine);
+      // // いいねを押した数
+      // let calIine = (articleIine += 1);
+      // let totalIine = Number(calIine);
 
+      // if (totalIine === 1) {
+      //   $("#articleArea").append(
+      //     ` <span class="iineCount" >` + totalIine + "</span>"
+      //   );
+      // } else if (totalIine > 1) {
+      //   let count = ` <span class="iineCount" >` + totalIine + "</span>";
+      //   $(`.iineCount`).replaceWith(count);
+      // } else {
+      //   return;
+      // }
+      articleIine++;
       $("#articleArea").append(
-        ` <span class="iineCount" >` + totalIine + "</span>"
+        ` <span class="iineCount" >` + articleIine + "</span>"
       );
     });
     // end of 投稿ボタン処理
