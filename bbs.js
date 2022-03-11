@@ -2,13 +2,13 @@
 
 $(function () {
   // 初投稿フラグ
-  let articleFlag = false;
   let counter = 0;
 
   let articleTitle = "";
   let articleName = "";
   let articleContent = "";
   let articleIine = 0;
+  let articleId = 0;
 
   $("#iineButton").hide();
   /**
@@ -24,7 +24,7 @@ $(function () {
     // 記事投稿欄に反映する
     for (let i = 1; i <= counter; i++) {
       articles.push({
-        id: counter,
+        id: articleId,
         title: newTitle,
         name: newName,
         content: newArticle,
@@ -34,6 +34,7 @@ $(function () {
 
     // articleの内容を1つ1つ取り出す
     for (let article of articles) {
+      articleId = article.id;
       articleTitle = article.title;
       articleName = article.name;
       articleContent = article.content;
@@ -52,17 +53,25 @@ $(function () {
     );
     // 記事の追加のたびにiineボタンを呼ぶ
     $("#articleArea").append(
-      '<button type=button class="iineButton">' +
-        "いいね！" +
-        "</button>" +
-        ` <span class="iineCount" value="${articleIine}">` +
-        articleIine +
-        "</span>"
+      '<button type=button class="iineButton">' + "いいね！" + "</button>"
     );
+
     $(".iineButton").on("click", function () {
-      let totalIine = ++articleIine;
-      $(".iineCount").val(totalIine);
-      console.log(articleIine);
+      // いいねを押した数
+      let totalIine = Number(++articleIine);
+      console.log(totalIine);
+      console.log(articleId);
+
+      if (totalIine === 1) {
+        $("#articleArea").append(
+          ` <span class="iineCount" >` + totalIine + "</span>"
+        );
+      } else if (totalIine > 1) {
+        let count = ` <span class="iineCount" >` + totalIine + "</span>";
+        $(".iineCount").replaceWith(count);
+      } else {
+        return;
+      }
     });
     // end of 投稿ボタン処理
   });
