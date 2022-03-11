@@ -62,7 +62,12 @@ $(function () {
     );
     // 記事の追加のたびにiineボタンを呼ぶ
     $("#articleArea").append(
-      '<button type=button class="iineButton">' + "いいね！" + "</button>"
+      '<button type=button class="iineButton">' +
+        "いいね！" +
+        "</button>" +
+        ` <span class="iineCount" >` +
+        articleIine +
+        "</span>"
     );
 
     $(".iineButton").on("click", function () {
@@ -81,9 +86,15 @@ $(function () {
       //   return;
       // }
       articleIine++;
-      $("#articleArea").append(
-        ` <span class="iineCount" >` + articleIine + "</span>"
+      $(".iineCount").replaceWith(
+        ` <span class="iineCount" >` +
+          articleIine +
+          "</span>" +
+          ` <span class="articleId" >` +
+          articleId +
+          "</span>"
       );
+      $(".articleId").hide();
     });
     // end of 投稿ボタン処理
   });
