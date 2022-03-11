@@ -8,8 +8,12 @@ $(function () {
   let articleTitle = "";
   let articleName = "";
   let articleContent = "";
+  let articleIine = 0;
 
   $("#iineButton").hide();
+  /**
+   * 投稿ボタンをあらわす.
+   */
   $("#addArticle").on("click", function () {
     // textareaの値を取得する
     let newTitle = $("#title").val();
@@ -24,16 +28,19 @@ $(function () {
         title: newTitle,
         name: newName,
         content: newArticle,
+        articleIine: 0,
       });
-      $("#articleArea").clone();
     }
 
+    // articleの内容を1つ1つ取り出す
     for (let article of articles) {
       articleTitle = article.title;
       articleName = article.name;
       articleContent = article.content;
+      articleIine = article.articleIine;
     }
 
+    // 記事の追加
     $("#articleArea").append(
       "<p>" + "タイトル：" + "<br/>" + "<br/>" + articleTitle + "</p>"
     );
@@ -43,16 +50,22 @@ $(function () {
     $("#articleArea").append(
       "<p>" + "記事内容：" + "<br/>" + "<br/>" + articleContent + "</p>"
     );
+    // 記事の追加のたびにiineボタンを呼ぶ
     $("#articleArea").append(
-      '<button type=button id="iineButton">' + "いいね！" + "</button>"
+      '<button type=button class="iineButton">' +
+        "いいね！" +
+        "</button>" +
+        ` <span class="iineCount" value="${articleIine}">` +
+        articleIine +
+        "</span>"
     );
+    $(".iineButton").on("click", function () {
+      let totalIine = ++articleIine;
+      $(".iineCount").val(totalIine);
+      console.log(articleIine);
+    });
+    // end of 投稿ボタン処理
   });
 
-  $("#iineButton").on("click", function () {
-    console.log("called");
-    let countIine = 0;
-    countIine++;
-    console.log(countIine);
-  });
   // end of function
 });

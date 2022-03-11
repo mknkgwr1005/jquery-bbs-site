@@ -1,0 +1,25 @@
+div {
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+.title {
+  width: 500px;
+  background-color: rgb(106, 252, 106);
+  border-radius: 10%;
+}
+
+.articleArea {
+  width: 500px;
+  background-color: aliceblue;
+  border-radius: 10%;
+}
